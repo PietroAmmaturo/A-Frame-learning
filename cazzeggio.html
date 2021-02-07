@@ -4,6 +4,10 @@
   </head>
   <body>
     <a-scene>
+			<!-- Assets Management System -->
+<a-assets>
+	<img id = "room" src="sample-assets/assets/images/envmap/2294472375_24a3b8ef46_o.jpg">
+</a-assets>
 			<a-sphere position="-1.5 1.25 -5"
 								radius="1.25"
 								color="#EF2D5E">
@@ -42,7 +46,8 @@
 												</a-circle>
 									</a-box>
 			</a-cylinder>
-      <a-sky color="#ECECEC">
+      <a-sky
+				src="#room">
 			</a-sky>
     </a-scene>
   </body>
