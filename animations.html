@@ -58,18 +58,29 @@
 					</a-box>
 				</a-entity>
 
-				<!-- moving box -->
-				<a-box
-					color="#FFAA00"
-					position="-2 0.5 -2"
-					animation__forth=
-						"property: position;
-						to: -2 0.5 2;
-						dur: 3000;
-						easing: linear;
-						loop:true;
-						dir: alternate"
-				</a-box>
+ <a-box position="-2.1 1.3 -4.5" rotation="0 45 0" color="#4CC3D9" depth=".2" width="2" shadow
+ animation__hover="property: position; dur: 2000; loop: true; dir:alternate; to: -2.1 1.5 -4.5;"
+ animation__spin="property: rotation; dur: 12000; loop: true; to: 0 1490 0;"
+ animation__color="property: color; type: color; dur:1000; loop: true; dir: alternate; to: #faaf52"
+ ></a-box>
+
+ <a-box position="-5.1 1.3 -4.5" rotation="0 45 0" color="#4CC3D9" depth=".2" width="2" shadow
+ animation_hover="property: position; dur: 2000; loop: true; dir:alternate; to: -5.1 1.5 -4.5;"
+ animation__spin="property: rotation; dur: 12000; loop: true; to: 0 1490 0;"
+ animation__color="property: color; type: color; dur:1000; loop: true; dir: alternate; to: #faaf52"
+ ></a-box>
+
+ <a-sphere radius=".5" position = "2 2 -30" color="blue"
+ animation__swoop="property: position; dur: 5000; loop: false; to: 5.1 1.5 4.5;">
+ </a-sphere>
+
+	<a-sphere radius=".5" position = "4 2 -30" color="red"
+ animation__swoop="property: position; dur: 5000; delay:1000; loop: false; to: 5.1 2 6;">
+ </a-sphere>
+
+ <a-tetrahedron position="4 2 -9" scale = ".5 .5 .5" color="#FF926B" radius="5"
+ animation__fade="property: material.opacity; loop: true; dur: 3000; dir: alternate; delay:400; loop: true; to: 0; from: 1"
+></a-tetrahedron>
 		</a-scene>
   </body>
 </html>
