@@ -1,54 +1,58 @@
 <html>
-  <head>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  </head>
-  <body>
-    <a-scene>
+
+	<head>
+		<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	</head>
+
+	<body>
+		<a-scene>
 			<!-- Assets Management System -->
-<a-assets>
-	<img id = "room" src="sample-assets/assets/images/envmap/2294472375_24a3b8ef46_o.jpg">
-</a-assets>
+			<a-assets>
+				<img id="room"
+						 src="sample-assets/assets/images/envmap/2294472375_24a3b8ef46_o.jpg">
+			</a-assets>
 			<a-sphere position="-1.5 1.25 -5"
 								radius="1.25"
 								color="#EF2D5E">
 			</a-sphere>
-      <a-cylinder position="1 0.75 -3"
+			<a-cylinder position="1 0.75 -3"
 									radius="0.5"
 									height="1.5"
 									color="#FFC65D"
 									segments-radial="6">
 			</a-cylinder>
-      <a-plane position="0 0 -4"
+			<a-plane position="0 0 -4"
 							 rotation="-90 0 0"
-							 width="4" height="4"
+							 width="4"
+							 height="4"
 							 color="#7BC8A4">
 			</a-plane>
-      <a-box position="-1 4 -3"
+			<a-box position="-1 4 -3"
 						 rotation="0 45 0"
 						 color="#4CC3D9">
-						 <a-circle color="#333333"
-						 					 side ="double"
-											 radius = "0.5"
-											 position="0 0 0.502">
-						</a-circle>
+				<a-circle color="#333333"
+									side="double"
+									radius="0.5"
+									position="0 0 0.502">
+				</a-circle>
 			</a-box>
 			<a-cylinder position="0 0 -10"
 									radius="0.5"
 									height="9"
 									color="#FFC65D"
 									segments-radial="6">
-									<a-box position="0 5 0"
-												 color="#4CC3D9">
-												 <a-circle color="#333333"
-																	 side ="double"
-																	 radius = "0.5"
-																	 position="0 0 0.501">
-												</a-circle>
-									</a-box>
+				<a-box position="0 5 0"
+							 color="#4CC3D9">
+					<a-circle color="#333333"
+										side="double"
+										radius="0.5"
+										position="0 0 0.501">
+					</a-circle>
+				</a-box>
 			</a-cylinder>
-      <a-sky
-				src="#room">
+			<a-sky src="#room">
 			</a-sky>
-    </a-scene>
-  </body>
+		</a-scene>
+	</body>
+
 </html>

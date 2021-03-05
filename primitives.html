@@ -1,56 +1,50 @@
 <html>
-  <head>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  </head>
-  <body>
-    <a-scene>
+
+	<head>
+		<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	</head>
+
+	<body>
+		<a-scene>
 			<!-- Assets Management System -->
 			<a-assets>
-				<img id = "canestra" src="sample-assets/assets/images/illustration/758px-Canestra_di_frutta_(Caravaggio).jpg">
+				<img id="canestra"
+						 src="sample-assets/assets/images/illustration/758px-Canestra_di_frutta_(Caravaggio).jpg">
 			</a-assets>
 
 			<!--image primitive | IMG size 1024x768px -->
 
-			<a-image
-				src="#canestra"
-				position="0 1.5 -11"
-				width="1"
-				height="0.75"
-				scale="12 9 1">
+			<a-image src="#canestra"
+							 position="0 1.5 -11"
+							 width="1"
+							 height="0.75"
+							 scale="12 9 1">
 			</a-image>
-			<a-entity
-				geometry=
-					"primitive: box;
+			<a-entity geometry="primitive: box;
 					height: 1.5"
-				material=
-					"shader: standard;
+								material="shader: standard;
 					color:#AA0000"
-				position="1 0.5 -4">
+								position="1 0.5 -4">
 			</a-entity>
-			<a-entity
-				geometry=
-					"primitive: box;
+			<a-entity geometry="primitive: box;
 					height: 1.5"
-				material=
-					"shader: standard;
+								material="shader: standard;
 					color:#AA0000"
-				position="-1 0.5 -4">
+								position="-1 0.5 -4">
 			</a-entity>
-			<a-entity
-				geometry=
-					"primitive: cylinder;
+			<a-entity geometry="primitive: cylinder;
 					theta-length:90;
 					theta-start:135;
 					radius: 0.707;
 					height: 0.833;
 					open-ended: true"
-				material=
-					"shader: flat;
+								material="shader: flat;
 					color:#FFFFFF;
 					side:double;
 					src:#canestra"
-				position="0 0.5 -4"
-				scale="10 10 10">
+								position="0 0.5 -4"
+								scale="10 10 10">
 			</a-entity>
-  </body>
+	</body>
+
 </html>

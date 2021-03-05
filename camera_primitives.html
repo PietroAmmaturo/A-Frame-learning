@@ -1,36 +1,42 @@
 <html>
-  <head>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  </head>
-  <body>
-    <a-scene>
+
+	<head>
+		<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	</head>
+
+	<body>
+		<a-scene>
 			<!-- Assets Management System -->
 			<a-assets>
-				<img id = "floor" src="sample-assets/assets/images/terrain/backgrounddetailed6.jpg">
+				<img id="floor"
+						 src="sample-assets/assets/images/terrain/backgrounddetailed6.jpg">
 			</a-assets>
-			<a-plane
-				material =
-					"color: #FFFFFF;
+			<a-plane material="color: #FFFFFF;
 					src: #floor;
 					repeat: 10 10"
-				rotation="-90 0 0"
-				position="1 0 0"
-				scale="10 10 1">
+							 rotation="-90 0 0"
+							 position="1 0 0"
+							 scale="10 10 1">
 			</a-plane>
-			<a-cylinder color="red" radius="0.5" height="2" position="-2 0 0">
+			<a-cylinder color="red"
+									radius="0.5"
+									height="2"
+									position="-2 0 0">
 			</a-cylinder>
 
-			<a-box color="green" height="2" depth="4" position="2 1 0">
+			<a-box color="green"
+						 height="2"
+						 depth="4"
+						 position="2 1 0">
 			</a-box>
 
 			<!-- origin at 0 0 0 -->
-			<a-entity
-				position="0 0 5">
-				<a-camera
-					fov="120"
-					active="true">
+			<a-entity position="0 0 5">
+				<a-camera fov="120"
+									active="true">
 				</a-camera>
 			</a-entity>
 		</a-scene>
-  </body>
+	</body>
+
 </html>

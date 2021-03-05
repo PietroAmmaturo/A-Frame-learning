@@ -6,9 +6,27 @@
 
 	<body>
 		<a-scene>
-			<a-box color="#689f38" position="-0 1 -17"></a-box>
-			<a-box color="#689f38" position="-0 1 -17"></a-box>
-			<a-box color="#689f38" position="-0 1 -17"></a-box>
+			<!-- <a-entity camera look-controls position="0 1.6 0"> <a-cursor></a-cursor>
+			</a-entity> -->
+			<a-entity camera
+								look-controls
+								position="0 1.6 0">
+				<a-entity cursor
+									position="0 0 -1"
+									geometry="primitive: sphere; radius: 0.005"
+									material="color: #000000; shader: flat; opacity: 0.5">
+				</a-entity>
+			</a-entity>
+			<a-box color="#689f38"
+						 position="-2 0 -7">
+			</a-box>
+			<a-box color="#689f38"
+						 position="0 0 -7">
+			</a-box>
+			<a-box color="#689f38"
+						 position="2 0 -7">
+			</a-box>
+
 			<a-sky color="#ECECEC"></a-sky>
 		</a-scene>
 	</body>
