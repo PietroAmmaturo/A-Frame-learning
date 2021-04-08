@@ -1,81 +1,53 @@
 <html>
 
-	<head>
-		<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-	</head>
+<head>
+	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
 
-	<body>
-		<a-scene>
-			<!-- Assets Management System -->
-			<a-assets>
-				<img id="brick_diffuse-NRM"
-						 src="sample-assets/assets/images/bricks/brick_diffuse.jpg">
-				<img id="brick_bump-NRM"
-						 src="sample-assets/assets/images/bricks/brick_bump.jpg">
-				<img id="envmap"
-						 src="sample-assets/assets/images/envmap/envmap.png">
-				<img id="floor"
-						 src="sample-assets/assets/images/terrain/grasslight-big.jpg">
-				<img id="floor-nm"
-						 src="sample-assets/assets/images/terrain/grasslight-big-nm.jpg">
+<body>
+	<a-scene>
+		<!-- Assets Management System -->
+		<a-assets>
+			<img id="brick_diffuse-NRM" src="sample-assets/assets/images/bricks/brick_diffuse.jpg">
+			<img id="brick_bump-NRM" src="sample-assets/assets/images/bricks/brick_bump.jpg">
+			<img id="envmap" src="sample-assets/assets/images/envmap/envmap.png">
+			<img id="floor" src="sample-assets/assets/images/terrain/grasslight-big.jpg">
+			<img id="floor-nm" src="sample-assets/assets/images/terrain/grasslight-big-nm.jpg">
 
-			</a-assets>
+		</a-assets>
 
-			<!-- left wall -->
-			<a-box color="#FFFFFF"
-						 src="sample-assets\assets/images/bricks/brick_diffuse.jpg"
-						 repeat="1 1"
-						 side="back"
-						 normal-map="#brick_diffuse-NRM"
-						 normal-texture-repeat="1 1"
-						 normal-scale="1 -1"
-						 width="4"
-						 height="4"
-						 depth="4"
-						 position="-2 1.5 -9"
-						 scale="1 1 1"></a-box>
-			<!-- right wall -->
-			<!-- normal-scale light from top -->
-			<!-- normal-map wrong (you need it but I do not have it) -->
-			<a-box material="color: #FFFFFF;
+		<!-- left wall -->
+		<a-box color="#FFFFFF" src="sample-assets\assets/images/bricks/brick_diffuse.jpg" repeat="1 1" side="back"
+			   normal-map="#brick_diffuse-NRM" normal-texture-repeat="1 1" normal-scale="1 -1" width="4" height="4"
+			   depth="4" position="-2 1.5 -9" scale="1 1 1"></a-box>
+		<!-- right wall -->
+		<!-- normal-scale light from top -->
+		<!-- normal-map wrong (you need it but I do not have it) -->
+		<a-box material="color: #FFFFFF;
 					src: #brick_bump-NRM;
 					repeat: 2 2;
 					side:back;
 					normal-map:#brick_bump-NRM;
 					normal-texture-repeat:2 2;
-					normal-scale:1 -1"
-						 width="4"
-						 height="4"
-						 depth="4"
-						 position="2 1.5 -9"
-						 scale="1 1 1"></a-box>
-			<a-sphere material="color: #0000AA;
+					normal-scale:1 -1" width="4" height="4" depth="4" position="2 1.5 -9" scale="1 1 1"></a-box>
+		<a-sphere material="color: #0000AA;
 					roughness: 0.2;
-					shader: standard"
-								radius="0.5"
-								position="-2 1.5 -9"></a-sphere>
-			<a-sphere material="color: #AA0000;
+					shader: standard" radius="0.5" position="-2 1.5 -9"></a-sphere>
+		<a-sphere material="color: #AA0000;
 					roughness: 0.2;
 					shader: flat;
-					opacity: 0.5"
-								radius="0.5"
-								position="2 1.5 -9"></a-sphere>
-			<a-sphere material="src: #envmap;
+					opacity: 0.5" radius="0.5" position="2 1.5 -9"></a-sphere>
+		<a-sphere material="src: #envmap;
 					roughness: 0.2;
-					shader: standard;"
-								radius="0.2"
-								position="2 1.5 -5"></a-sphere>
-			<a-plane material="color: #FFFFFF;
+					shader: standard;" radius="0.2" position="2 1.5 -5"></a-sphere>
+		<a-plane material="color: #FFFFFF;
 					src: #floor;
 					repeat: 10 10;
 					normal-map: #floor-nm;
 					normal-texture-repeat: 10 10;
-					normal-scale: 1 1"
-							 rotation="-90 0 0"
-							 position="0 -0.6 0"
-							 scale="100 100 1"></a-plane>
-			<a-sky color="#ECECEC"></a-sky>
-		</a-scene>
-	</body>
+					normal-scale: 1 1" rotation="-90 0 0" position="0 -0.6 0" scale="100 100 1"></a-plane>
+		<a-sky color="#ECECEC"></a-sky>
+	</a-scene>
+</body>
 
 </html>

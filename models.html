@@ -1,29 +1,25 @@
 <html>
 
-	<head>
-		<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-	</head>
+<head>
+	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
 
-	<body>
-		<a-scene>
-			<!-- Assets Management System -->
-			<a-assets>
-				<a-asset-item id="terrain1"
-											src="myassets/terrains/skeletal_island/scene.gltf"></a-asset-item>
-				<a-asset-item id="terrain2"
-											src="myassets/terrains/tc_city_sections/scene.gltf"></a-asset-item>
-				<a-asset-item id="terrain3"
-											src="myassets/terrains/silvaplana_surlej/scene.gltf"></a-asset-item>
-			</a-assets>
-			<!-- sky -->
-			<a-entity gltf-model="#terrain1">
-			</a-entity>
-			<a-entity position="0 1 0">
-				<a-camera fov="100"
-									active="true">
-				</a-camera>
-			</a-entity>
-		</a-scene>
-	</body>
+<body>
+	<a-scene>
+		<!-- Assets Management System -->
+		<a-assets>
+			<a-asset-item id="terrain1" src="myassets/terrains/skeletal_island/scene.gltf"></a-asset-item>
+			<a-asset-item id="terrain2" src="myassets/terrains/tc_city_sections/scene.gltf"></a-asset-item>
+			<a-asset-item id="terrain3" src="myassets/terrains/silvaplana_surlej/scene.gltf"></a-asset-item>
+		</a-assets>
+		<!-- sky -->
+		<a-entity gltf-model="#terrain1">
+		</a-entity>
+		<a-entity position="0 1 0">
+			<a-camera fov="100" active="true">
+			</a-camera>
+		</a-entity>
+	</a-scene>
+</body>
 
 </html>

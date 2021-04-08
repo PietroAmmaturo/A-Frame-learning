@@ -1,26 +1,24 @@
 <html>
 
-	<head>
-		<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-	</head>
+<head>
+	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
 
-	<body>
-		<a-scene shadow="type: pcf">
-			<!-- Assets Management System -->
-			<a-assets>
-				<img id="floor"
-						 src="sample-assets/assets/images/terrain/grasslight-big.jpg">
-				<img id="canestra"
-						 src="sample-assets/assets/images/illustration\758px-Canestra_di_frutta_(Caravaggio).jpg">
-			</a-assets>
+<body>
+	<a-scene shadow="type: pcf">
+		<!-- Assets Management System -->
+		<a-assets>
+			<img id="floor" src="sample-assets/assets/images/terrain/grasslight-big.jpg">
+			<img id="canestra" src="sample-assets/assets/images/illustration\758px-Canestra_di_frutta_(Caravaggio).jpg">
+		</a-assets>
 
-			<!-- default lights -->
-			<!-- ambient light
+		<!-- default lights -->
+		<!-- ambient light
 			<a-entity
 				light="type: ambient"
 				color="BBB"
 			</a-entity> -->
-			<!-- directional light
+		<!-- directional light
 			<a-entity
 				light =
 					"type: directional;
@@ -30,99 +28,76 @@
 					position="0.5 1 1">
 			</a-entity> -->
 
-			<!-- sky -->
-			<a-sky color="#555555"></a-sky>
-			<a-plane shadow="cast: true; receive: true"
-							 color="#338899"
-							 position="2 4 -10"
-							 scale="50 8 1">
-			</a-plane>
+		<!-- sky -->
+		<a-sky color="#555555"></a-sky>
+		<a-plane shadow="cast: true; receive: true" color="#338899" position="2 4 -10" scale="50 8 1">
+		</a-plane>
 
-			<a-box shadow="cast: true; receive: true"
-						 color="#334455"
-						 position="0 1 -8"
-						 scale="5 2 0.1">
-			</a-box>
+		<a-box shadow="cast: true; receive: true" color="#334455" position="0 1 -8" scale="5 2 0.1">
+		</a-box>
 
-			<a-plane shadow="cast: true; receive: true"
-							 material="src: #floor;
-					repeat: 1000 1000"
-							 rotation="-90 0 0"
-							 position="1 0 0"
-							 scale="1000 1000 1">
-			</a-plane>
+		<a-plane shadow="cast: true; receive: true" material="src: #floor;
+					repeat: 1000 1000" rotation="-90 0 0" position="1 0 0" scale="1000 1000 1">
+		</a-plane>
 
-			<!-- origin at 0 0 0 -->
-			<a-entity position="0 0 0">
-				<a-camera active="true">
-				</a-camera>
-			</a-entity>
+		<!-- origin at 0 0 0 -->
+		<a-entity position="0 0 0">
+			<a-camera active="true">
+			</a-camera>
+		</a-entity>
 
-			<!-- rotating box -->
-			<a-box shadow="cast: true; receive: true"
-						 color="#AA0000"
-						 position="0 1 -5"
-						 animation="property: rotation;
+		<!-- rotating box -->
+		<a-box shadow="cast: true; receive: true" color="#AA0000" position="0 1 -5" animation="property: rotation;
 					to: 0 360 0;
 					dur: 5000;
 					easing: linear;
 					loop:true">
-			</a-box>
+		</a-box>
 
-			<!-- orbiting and revolving box -->
-			<a-entity shadow="cast: true; receive: true"
-								position="0 1 -5"
-								animation="property: rotation;
+		<!-- orbiting and revolving box -->
+		<a-entity shadow="cast: true; receive: true" position="0 1 -5" animation="property: rotation;
 					to: 0 -360 0;
 					dur: 5000;
 					easing: linear;
 					loop:true">
-				<a-box id="orbiting-box"
-							 color="#00AA00"
-							 position="2 0 0"
-							 animation="property: rotation;
+			<a-box id="orbiting-box" color="#00AA00" position="2 0 0" animation="property: rotation;
 							to: 0 -360 0;
 							dur: 5000;
 							easing: linear;
 							loop:true">
-				</a-box>
-			</a-entity>
+			</a-box>
+		</a-entity>
 
-			<a-image src="#canestra"
-							 scale="4 4 1"
-							 position="2 2 -7">
-			</a-image>
+		<a-image src="#canestra" scale="4 4 1" position="2 2 -7">
+		</a-image>
 
-			<!--custom light | ambient -->
-			<a-entity light="type: ambient;
+		<!--custom light | ambient -->
+		<a-entity light="type: ambient;
 						intensity: 0.2">
-			</a-entity>
-			<!-- custom light | point -->
-			<a-entity light="type:point;
+		</a-entity>
+		<!-- custom light | point -->
+		<a-entity light="type:point;
 					intensity: 0.8;
 					distance: 50;
 					castShadow: true;
-					shadowCameraVisible: true;"
-								position="0 4 1">
-			</a-entity>
-			<!-- custom light | spot -->
-			<a-entity light="type:spot;
+					shadowCameraVisible: true;" position="0 4 1">
+		</a-entity>
+		<!-- custom light | spot -->
+		<a-entity light="type:spot;
 					angle: 20;
 					penumbra: 0.1;
 					color: #C40070;
 					target: #orbiting-box;
 					intensity: 0.8;
 					castShadow: true;
-					shadowCameraVisible: true;"
-								position="3 4 1"
-								animation="property: light.intensity;
+					shadowCameraVisible: true;" position="3 4 1" animation="property: light.intensity;
 						from: 1;
 						to: 0.2;
 						dur: 5000;
 						dir: alternate;
 						easing: linear;
 						loop:true">
-			</a-entity>
-	</body>
+		</a-entity>
+</body>
 
 </html>

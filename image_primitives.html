@@ -1,48 +1,28 @@
 <html>
 
-	<head>
-		<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-	</head>
+<head>
+	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
 
-	<body>
-		<a-scene>
-			<!-- Assets Management System -->
-			<a-assets>
-				<img id="canestra"
-						 src="sample-assets/assets/images/illustration/758px-Canestra_di_frutta_(Caravaggio).jpg">
-			</a-assets>
+<body>
+	<a-scene>
+		<!-- Assets Management System -->
+		<a-assets>
+			<img id="canestra" src="sample-assets/assets/images/illustration/758px-Canestra_di_frutta_(Caravaggio).jpg">
+		</a-assets>
 
-			<!--image primitive | IMG size 1024x768px -->
+		<!--image primitive | IMG size 1024x768px -->
 
-			<a-image src="#canestra"
-							 position="0 1.5 -30"
-							 width="1"
-							 height="0.75"
-							 scale="3 3 1"></a-image>
-			<a-curvedimage src="#canestra"
-										 theta-length="50"
-										 theta-start="90"
-										 radius="0.5"
-										 height="0.327"
-										 position="0 1.5 0"
-										 scale="3 3 3">
-			</a-curvedimage>
-			<a-curvedimage src="#canestra"
-										 theta-length="50"
-										 theta-start="155"
-										 radius="0.5"
-										 height="0.327"
-										 position="0 1.5 0"
-										 scale="3 3 3">
-			</a-curvedimage>
-			<a-curvedimage src="#canestra"
-										 theta-length="50"
-										 theta-start="220"
-										 radius="0.5"
-										 height="0.327"
-										 position="0 1.5 0"
-										 scale="3 3 3">
-			</a-curvedimage>
-	</body>
+		<a-image src="#canestra" position="0 1.5 -30" width="1" height="0.75" scale="3 3 1"></a-image>
+		<a-curvedimage src="#canestra" theta-length="50" theta-start="90" radius="0.5" height="0.327" position="0 1.5 0"
+					   scale="3 3 3">
+		</a-curvedimage>
+		<a-curvedimage src="#canestra" theta-length="50" theta-start="155" radius="0.5" height="0.327"
+					   position="0 1.5 0" scale="3 3 3">
+		</a-curvedimage>
+		<a-curvedimage src="#canestra" theta-length="50" theta-start="220" radius="0.5" height="0.327"
+					   position="0 1.5 0" scale="3 3 3">
+		</a-curvedimage>
+</body>
 
 </html>

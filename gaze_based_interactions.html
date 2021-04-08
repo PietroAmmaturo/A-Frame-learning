@@ -1,84 +1,61 @@
 <html>
 
-	<head>
-		<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-		<script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+<head>
+	<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+	<script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
 
-	</head>
+</head>
 
-	<body>
-		<a-scene>
-			<!-- <a-entity camera look-controls position="0 1.6 0"> <a-cursor></a-cursor>
+<body>
+	<a-scene>
+		<!-- <a-entity camera look-controls position="0 1.6 0"> <a-cursor></a-cursor>
 			</a-entity> -->
-			<a-entity camera="active: true"
-								look-controls
-								wasd-controls
-								position="0 1.6 0">
-				<a-entity raycaster="objects: .clickable"
-									animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; to: 1 1 1"
-									animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; to: 3 3 3"
-									animation__leaving="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 250; to: 1 1 1"
-									cursor="fuse: true; fuseTimeout: 1500"
-									material="color: black; shader: flat"
-									position="0 0 -0.2"
-									geometry="primitive: sphere; radius: 0.001">
-				</a-entity>
+		<a-entity camera="active: true" look-controls wasd-controls position="0 1.6 0">
+			<a-entity raycaster="objects: .clickable"
+					  animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; to: 1 1 1"
+					  animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; to: 3 3 3"
+					  animation__leaving="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 250; to: 1 1 1"
+					  cursor="fuse: true; fuseTimeout: 1500" material="color: black; shader: flat" position="0 0 -0.2"
+					  geometry="primitive: sphere; radius: 0.001">
 			</a-entity>
-			<a-box id="leftbox"
-						 class="clickable"
-						 color="#689f38"
-						 position="-2 0 -7"
-						 event-set__enter="_event: mouseenter; material.color: #FF0000"
-						 event-set__leave="_event: mouseleave; material.color: #689f38"
-						 event-set__tarcol="_event: click; _target: #sph; material.color: #0000FF"
-						 event-set__clearclass="_event: click; class: not-clickable"
-						 event-set__tarclass="_event: click; _target: #sph; class: clickable">
-			</a-box>
-			<a-sphere id="sph"
-								radius="0.5"
-								position="-2 3 -7"
-								event-set__rescol="_event: click; material.color: #FFFFFF"
-								event-set__clearclass="_event: click; class: not-clickable"
-								event-set__tarclass="_event: click; _target: #leftbox; class: clickable">
-			</a-sphere>
-			<a-box id="centerbox"
-						 class="clickable"
-						 color="#689f38"
-						 position="0 0 -7"
-						 event-set__enter="_event: mouseenter; material.color: #FF0000"
-						 event-set__leave="_event: mouseleave; material.color: #689f38"
-						 event-set__tarvis="_event: click; _target: #con; visible: true"
-						 event-set__clearclass="_event: click; class: not-clickable"
-						 event-set__tarclass="_event: click; _target: #con; class: clickable">
-			</a-box>
-			<a-cone id="con"
-							visible="false"
-							radius-bottom="0.5"
-							radius-top="0.0"
-							position="0 3 -7"
-							event-set__resvis="_event: click; visible: false"
-							event-set__clearclass="_event: click; class: not-clickable"
-							event-set__tarclass="_event: click; _target: #centerbox; class: clickable">
-			</a-cone>
-			<a-box id="rightbox"
-						 class="clickable"
-						 color="#689f38"
-						 position="2 0 -7"
-						 event-set__enter="_event: mouseenter; material.color: #FF0000"
-						 event-set__leave="_event: mouseleave; material.color: #689f38"
-						 event-set__tarpos="_event:click; _target:#cyl; position: 2 3 -5"
-						 event-set__clearclass="_event: click; class: not-clickable"
-						 event-set__tarclass="_event: click; _target: #cyl; class: clickable">
-			</a-box>
-			<a-cylinder id="cyl"
-									radius="0.5"
-									position="2 3 -7"
-									event-set__respos="_event: click; _target:#cyl; position: 2 3 -7"
-									event-set__clearclass="_event: click; class: not-clickable"
-									event-set__tarclass="_event: click; _target: #rightbox; class: clickable">
-			</a-cylinder>
-			<a-sky color="#ECECEC"></a-sky>
-		</a-scene>
-	</body>
+		</a-entity>
+		<a-box id="leftbox" class="clickable" color="#689f38" position="-2 0 -7"
+			   event-set__enter="_event: mouseenter; material.color: #FF0000"
+			   event-set__leave="_event: mouseleave; material.color: #689f38"
+			   event-set__tarcol="_event: click; _target: #sph; material.color: #0000FF"
+			   event-set__clearclass="_event: click; class: not-clickable"
+			   event-set__tarclass="_event: click; _target: #sph; class: clickable">
+		</a-box>
+		<a-sphere id="sph" radius="0.5" position="-2 3 -7" event-set__rescol="_event: click; material.color: #FFFFFF"
+				  event-set__clearclass="_event: click; class: not-clickable"
+				  event-set__tarclass="_event: click; _target: #leftbox; class: clickable">
+		</a-sphere>
+		<a-box id="centerbox" class="clickable" color="#689f38" position="0 0 -7"
+			   event-set__enter="_event: mouseenter; material.color: #FF0000"
+			   event-set__leave="_event: mouseleave; material.color: #689f38"
+			   event-set__tarvis="_event: click; _target: #con; visible: true"
+			   event-set__clearclass="_event: click; class: not-clickable"
+			   event-set__tarclass="_event: click; _target: #con; class: clickable">
+		</a-box>
+		<a-cone id="con" visible="false" radius-bottom="0.5" radius-top="0.0" position="0 3 -7"
+				event-set__resvis="_event: click; visible: false"
+				event-set__clearclass="_event: click; class: not-clickable"
+				event-set__tarclass="_event: click; _target: #centerbox; class: clickable">
+		</a-cone>
+		<a-box id="rightbox" class="clickable" color="#689f38" position="2 0 -7"
+			   event-set__enter="_event: mouseenter; material.color: #FF0000"
+			   event-set__leave="_event: mouseleave; material.color: #689f38"
+			   event-set__tarpos="_event:click; _target:#cyl; position: 2 3 -5"
+			   event-set__clearclass="_event: click; class: not-clickable"
+			   event-set__tarclass="_event: click; _target: #cyl; class: clickable">
+		</a-box>
+		<a-cylinder id="cyl" radius="0.5" position="2 3 -7"
+					event-set__respos="_event: click; _target:#cyl; position: 2 3 -7"
+					event-set__clearclass="_event: click; class: not-clickable"
+					event-set__tarclass="_event: click; _target: #rightbox; class: clickable">
+		</a-cylinder>
+		<a-sky color="#ECECEC"></a-sky>
+	</a-scene>
+</body>
 
 </html>
