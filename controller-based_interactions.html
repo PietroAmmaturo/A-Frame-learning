@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+
+</head>
+
+<body>
+    <a-scene>
+
+        <a-box event-set__click="material.color: red; scale: 2 2 2" event-set__mouseenter="material.color: blue"
+               event-set__1="_event: mouseleave; material.color: red"></a-box>
+        <!-- MAin Screen -->
+        <a-box id="screen" color="#212121" position="0 2.75 -9" scale="8 4 0.1"
+               event-set__tarcol="_event: click; _target: #screen; color: #212121"></a-box>
+        <!-- Left Button -->
+        <a-box color="#212121" position="-2.25 0 -9" scale="2 1 0.1"
+               event-set__en="_event: mouseenter; material.color: #AA0000"
+               event-set__le="_event: mouseleave; material.color: #212121"
+               event-set__tarcol="_event: click; _target: #screen; color: #AA0000"></a-box>
+        <!-- Center Button -->
+        <a-box color="#212121" position="0 0 -9" scale="2 1 0.1"
+               event-set__en="_event: mouseenter; material.color: #00AA00"
+               event-set__le="_event: mouseleave; material.color: #212121"
+               event-set__tarcol="_event: click; _target: #screen; color: #00AA00"></a-box>
+        <!-- Right Button -->
+        <a-box color="#212121" position="2.25 0 -9" scale="2 1 0.1"
+               event-set__en="_event: mouseenter; material.color: #0000AA"
+               event-set__le="_event: mouseleave; material.color: #212121"
+               event-set__tarcol="_event: click; _target: #screen; color: #0000AA"></a-box>
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+
+        <a-sky></a-sky>
+    </a-scene>
+</body>
+
+</html>

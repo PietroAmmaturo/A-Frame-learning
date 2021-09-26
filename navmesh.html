@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced Hello World A-Frame WebXR</title>
+<!-- *** CHANGE THESE TO COMPONENTS ON YOUR SERVER *** -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="aframe-environment-component-master/dist/aframe-environment-component.min.js"></script>
+    <script src="aframe-extras-master/dist/aframe-extras.min.js"></script>
+    <script src="aframe-teleport-controls-master/dist/aframe-teleport-controls.js"></script>
+    <script src="superframe-master/components/thumb-controls/dist/aframe-thumb-controls-component.min.js"></script>
+<!-- for creating Navmesh... Also uncomment a-scene inspector-plugin-recast -->
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+</script>
+</head>
+  <body>
+<button id="playButton" type="button">Play Music</button>
+    <!-- The music sound of the following open source classical Mozart .mp3 file.  If you replace, make sure it's open source or you have your own rights. -->
+    <audio id="playAudio" autoplay loop>
+        <source src="https://rocketvirtual.com/A-Frame_WebXR/assets/mp3/MozartALittleNightMusic.mp3" type="audio/mpeg">
+    </audio>
+<a-scene background="color: #FAFAFA" inspector-plugin-recast>
+
+<!-- nav-mesh: protecting us from running thru sphere, cube and cylinder  
+      <a-entity id="navmesh-Hello" gltf-model="assets/gltf/AdvHelloWorldnavmesh.gltf" visible="false" nav-mesh=""></a-entity>-->
+<!-- Basic movement and teleportation  -->
+      <a-entity id="cameraRig" movement-controls="constrainToNavMesh: true;" navigator="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable" position="0 0 0" rotation="0 0 0">
+        <!-- camera -->
+        <a-entity id="head" camera="active: true" position="0 1.6 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: true" ></a-entity>
+              <!-- Left Controller  -->
+              <a-entity class="leftController" hand-controls="hand: left; handModelStyle: lowPoly; color: #15ACCF" tracked-controls vive-controls="hand: left" oculus-touch-controls="hand: left" windows-motion-controls="hand: left" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; button: trigger; type: line; curveShootingSpeed: 18; collisionEntities: #navmesh-Hello; landingMaxAngle: 60" visible="true"></a-entity>
+              <!-- Right Controller  -->
+              <a-entity class="rightController" hand-controls="hand: right; handModelStyle: lowPoly; color: #15ACCF" tracked-controls vive-controls="hand: right" oculus-touch-controls="hand: right" windows-motion-controls="hand: right" laser-controls raycaster="showLine: true; far: 10; interval: 0; objects: .clickable, a-link;" line="color: lawngreen; opacity: 0.5" visible="true"></a-entity>
+      </a-entity>
+<!-- Normal Hello World objects modified to respond to onclick and audio  -->
+      <a-box id="cube"  position="-1 0.66921 -3" rotation="0 45 0" color="#4CC3D9" visible="true" shadow ></a-box>
+      <a-sphere id="sphere"  position="0 1.44508 -5" radius="1.25" color="#EF2D5E" shadow audiohandler></a-sphere>
+      <a-cylinder id="cylinder"  position="1 0.8993 -3" radius="0.5" height="1.5" color="#FFC65D" shadow ></a-cylinder>
+      <a-plane position="0 0.08958 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow="recieve: true" ></a-plane >
+<!-- A light in the scene casting shadows -->
+      <a-entity light="intensity: 0.6; castShadow: true; shadowCameraLeft: -10; shadowCameraBottom: -10; shadowCameraRight: 10; shadowCameraTop: 10; shadowCameraVisible: true" position="9.9649 17.32329 13.93447"></a-entity>
+</a-scene>
+  </body>
+</html>
