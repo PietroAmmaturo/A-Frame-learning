@@ -1,0 +1,21 @@
+
+<html>
+  <head>
+    <title>amirrozen</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  </head>
+
+  <body>
+    <video style="position: absolute; opacity: 0;" id="greenscreenvideo" src="example.mp4" loop autoplay></video>
+    <a-scene inspector="" keyboard-shortcuts="" screenshot="" device-orientation-permission-ui="" fog="">
+      <a-plane 
+        material="shader: chromakey; src: #greenscreenvideo; color: 0 0.9 0" 
+        position="0 0 -2" 
+        scale="3.2 1.8 1 "
+      ></a-plane>
+    </a-scene>
+    
+  </body>
+</html>
