@@ -13,7 +13,11 @@
 
 		<!--image primitive | IMG size 1024x768px -->
 
-		<a-image src="#canestra" position="0 1.5 -30" width="1" height="0.75" scale="3 3 1"></a-image>
+		<a-entity geometry="prmitive: plane; width: 1; height:0.75" material="src: #canestra; offset: 0 0.5; repeat: 0.5 0.5" position="-10 7.5 -30" scale="20 20 1"></a-entity>
+		<a-entity geometry="prmitive: plane; width: 1; height:0.75" material="src: #canestra; offset: 0.5 0.5; repeat: 0.5 0.5" position="10 7.5 -30" scale="20 20 1"></a-entity>
+		<a-entity geometry="prmitive: plane; width: 1; height:0.75" material="src: #canestra; offset: 0 0; repeat: 0.5 0.5" position="-10 -7.5 -30" scale="20 20 1"></a-entity>
+		<a-entity geometry="prmitive: plane; width: 1; height:0.75" material="src: #canestra; offset: 0.5 0; repeat: 0.5 0.5" position="10 -7.5 -30" scale="20 20 1"></a-entity>
+
 		<a-curvedimage src="#canestra" theta-length="50" theta-start="90" radius="0.5" height="0.327" position="0 1.5 0"
 					   scale="3 3 3">
 		</a-curvedimage>
