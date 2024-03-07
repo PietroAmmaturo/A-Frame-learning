@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  </head>
+  <script>
+    AFRAME.registerComponent("elevator-controls-component", {
+      schema: {
+        lowestFloor: { type: "number", default: 0 },
+        highestFloor: { type: "number", default: 0 },
+      },
+      init: function () {
+        var data = this.data;
+        var el = this.el;
+
+        // Create elevator buttons dynamically
+        for (
+          var floor = data.highestFloor;
+          floor >= data.lowestFloor;
+          floor--
+        ) {
+          var button = document.createElement("a-box");
+          button.setAttribute("elevator-button-component", "floor: " + floor);
+          button.setAttribute("position", "0 " + floor * 0.05 + " 0.005");
+          button.setAttribute("width", "0.03");
+          button.setAttribute("height", "0.03");
+          button.setAttribute("depth", "0.002");
+
+          var text = document.createElement("a-text");
+          text.setAttribute("width", "0.03");
+          text.setAttribute("wrap-count", "2");
+          text.setAttribute("value", floor.toString());
+          text.setAttribute("color", "#000");
+          text.setAttribute("align", "center");
+          text.setAttribute("position", "0 0 0.001");
+
+          button.appendChild(text);
+          el.appendChild(button);
+        }
+      },
+    });
+
+    AFRAME.registerComponent("elevator-button-component", {
+      schema: {
+        floor: { type: "number", default: 0 },
+        animationTime: { type: "number", default: 200 },
+      },
+      init: function () {
+        var data = this.data;
+        var el = this.el;
+        let popup = document.createElement("a-entity");
+        popup.setAttribute("elevator-popup-component", "floor: " + data.floor);
+        popup.setAttribute("position", "0 0 0.01");
+        popup.setAttribute("scale", "0 0 0");
+        el.appendChild(popup);
+        el.classList.add("clickable");
+        el.setAttribute("material", "emissive:white");
+        el.setAttribute("material", "emissiveIntensity:0.2");
+
+        // Hover effect
+        el.addEventListener("mouseenter", function () {
+          el.setAttribute("material", "emissiveIntensity:0.5");
+
+          let popups = document.querySelectorAll(
+            "[elevator-popup-component]"
+          );
+
+          // Reset all buttons
+          popups.forEach(function (p) {
+            if (p == popup) return;
+            p.setAttribute("animation__scale", "property: scale; easing: easeInCubic; dur: " + data.animationTime +"; to: 0 0 0");
+            p.setAttribute("animation__position", "property: position; easing: easeInCubic; dur: " + data.animationTime +"; to: 0 0 0.01");
+            p.setAttribute("material", "emissive: green; emissiveIntensity: 0.2");
+            p.parentEl.setAttribute("material", "emissiveIntensity:0.2");
+            p.classList.remove("clickable");
+          });
+
+          if (el.classList.contains("active")) return;
+
+          // Create an animation attribute for mouse enter
+          popup.setAttribute(
+            "animation__scale",
+            "property: scale; easing: easeOutCubic; dur: " + data.animationTime +"; to: 1 1 1"
+          );
+          popup.setAttribute(
+            "animation__position",
+            "property: position; easing: easeOutCubic; dur: " + data.animationTime +"; to: 0.1 0 0.01"
+          );
+          popup.setAttribute(
+              "animation__mouseenter_scale",
+              "property: scale; startEvents: mouseenter; easing: easeInCubic; dur: " + data.animationTime +"; to: 0 0 0"
+          );
+          popup.setAttribute(
+              "animation__mouseenter_position",
+              "property: position; startEvents: mouseenter; easing: easeInCubic; dur: " + data.animationTime +"; to: 0 0 0.01"
+          );
+
+          // avoid misclick during animation
+          setTimeout(() => popup.classList.add("clickable"), data.animationTime);
+        });
+      },
+    });
+
+    AFRAME.registerComponent("elevator-popup-component", {
+      schema: {
+        floor: { type: "number", default: 0 },
+      },
+      init: function () {
+        var data = this.data;
+        var el = this.el;
+
+        // Create a circle entity
+        el.setAttribute("geometry", "primitive: circle; radius: 0.05");
+        el.setAttribute("material", "emissive: green; emissiveIntensity: 0.5");
+        el.setAttribute(
+          "text",
+          "value: OK; color: white; align: center; width: 0.07; wrap-count: 3;"
+        );
+
+        // Hover effect
+        el.addEventListener("mouseenter", function () {
+          el.setAttribute("material", "emissive: green; emissiveIntensity:1");
+
+          var activeButtons = document.querySelectorAll(
+            "[elevator-button-component].active"
+          );
+
+          // Reset all buttons
+          activeButtons.forEach(function (button) {
+            button.setAttribute("material", "emissive:white");
+            button.setAttribute("material", "emissiveIntensity:0.2");
+            button.classList.remove("active");
+          });
+
+          // Set this button as active
+          el.parentEl.setAttribute("material", "emissive:#AAFFAA");
+          el.parentEl.setAttribute("material", "emissiveIntensity:1");
+          document
+            .querySelectorAll("[elevator-monitor-component]")
+            .forEach((el) => el.setAttribute("value", data.floor));
+          el.parentEl.classList.add("active");
+        });
+      },
+    });
+  </script>
+  <body>
+    <a-scene
+      shadow="type: pcf"
+      renderer="antialias: true;
+    colorManagement: true;
+    sortObjects: true;
+    physicallyCorrectLights: true; toneMapping: no"
+    >
+      <!-- basic light -->
+      <a-entity
+        light="type: point; color: #FFF; intensity: 1; distance: 5; castShadow: true;"
+        position="0 1.6 0"
+      ></a-entity>
+      <a-entity light="type: ambient; color: #FFF; intensity: 0.2;"></a-entity>
+
+      <!-- elevator -->
+      <a-box
+        position="0 1.3 0"
+        width="2"
+        height="2.6"
+        depth="2"
+        color="#D3D3D3"
+        material="side:back"
+        shadow="cast: true; receive: true"
+      >
+        <!-- elevator door -->
+        <a-box
+          position="0.5 -0.1 -1"
+          width="1"
+          height="2.4"
+          depth="0.1"
+          color="#B3B3B3"
+          shadow="cast: true; receive: true"
+        ></a-box>
+        <a-box
+          position="-0.4 -0.1 -1"
+          width="0.8"
+          height="2.4"
+          depth="0.05"
+          color="#B3B3B3"
+          shadow="cast: true; receive: true"
+        ></a-box>
+        <a-entity>
+          <a-box
+            position="0 1.2 -1"
+            width="0.39"
+            height="0.19"
+            depth="0.011"
+            material="emissive:#FFFFFF; emissiveIntensity: 0.01"
+            color="#000000"
+          >
+            <a-text
+              elevator-monitor-component
+              value="1"
+              position="0 0 0.012"
+              align="center"
+              wrap-count="2"
+              width="0.25"
+            ></a-text>
+          </a-box>
+          <a-box
+            position="0 1.2 -1"
+            width="0.4"
+            height="0.2"
+            depth="0.01"
+            color="#B3B3B3"
+          ></a-box>
+        </a-entity>
+        <!-- elevator buttons -->
+        <a-entity rotation="0 90 0" position="-0.995 0.2 -0.4">
+          <a-box
+            position="0 0.1 0"
+            width="0.1"
+            height="0.4"
+            depth="0.01"
+            color="#B3B3B3"
+            shadow="cast: true; receive: true"
+          >
+          </a-box>
+          <a-entity
+            elevator-controls-component="lowestFloor: -1; highestFloor: 5;"
+          ></a-entity>
+        </a-entity>
+
+        <!-- elevator panel -->
+      </a-box>
+
+      <a-entity camera look-controls position="-0.4 1.7 -0.4">
+        <a-entity
+          cursor="fuse: false;"
+          material="color: black; shader: flat"
+          position="0 0 -0.1"
+          geometry="primitive: ring; radiusInner: 0.001; radiusOuter: 0.0015"
+          raycaster="objects: .clickable"
+        >
+        </a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

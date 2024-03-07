@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+  </head>
+  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+  <!-- AR.js A-Frame components -->
+  <script
+    type="text/javascript"
+    src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"
+  ></script>
+
+  <script>
+    AFRAME.registerComponent("change-color-onclick", {
+      init: function () {
+        // every click, we make our model grow in size :)
+        this.el.addEventListener("click", (async function (ev) {
+          const color = (await this.el.getAttribute("material")).color;
+          if (color === "red") {
+            this.el.setAttribute("material", "color", "yellow");
+          } else {
+            this.el.setAttribute("material", "color", "red");
+          }
+        }).bind(this));
+      },
+    });
+  </script>
+  <style>
+    .arjs-loader {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .arjs-loader div {
+      text-align: center;
+      font-size: 1.25em;
+      color: white;
+    }
+  </style>
+
+  <body style="margin: 0px; overflow: hidden">
+    <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+    <a-scene
+    embedded
+      webxr="requiredFeatures: dom-overlay;
+                    overlayElement: canvas;
+                    referenceSpaceType: local"
+      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true; precision: medium;"
+    >
+      <a-marker
+        cursor="rayOrigin: mouse"
+        raycaster="objects: [geometry]"
+        markerhandler
+        emitevents="true"
+        type="barcode"
+        value="5"
+        size="0.1"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
+        <!-- Use the marker as a parent entity to define the box's size -->
+        <a-entity
+          change-color-onclick
+          material="color: yellow"
+          geometry="primitive: box; width: 1; height: 1; depth: 1"
+          position="0 0 0"
+          scale="1 1 1"
+        ></a-entity>
+      </a-marker>
+
+      <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
